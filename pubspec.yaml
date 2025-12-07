@@ -12,13 +12,14 @@ dependencies:
   flutter:
     sdk: flutter
 
-  sensors_plus: ^6.1.0
+  sensors_plus: ^7.0.0
   cupertino_icons: ^1.0.8
+  vibration: ^3.1.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  flutter_launcher_icons: ^0.14.4
   flutter_lints: ^5.0.0
 
 
@@ -26,4 +27,10 @@ flutter:
 
   uses-material-design: true
 
-  
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon.png"
+  min_sdk_android: 21 # Helps with adaptive icons
+  adaptive_icon_background: "#1C3D5A" # Your Navy Color (Optional for Android 8+)
+  adaptive_icon_foreground: "assets/icon.png"

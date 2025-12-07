@@ -26,7 +26,7 @@ The app locks the device orientation to Portrait to prevent OS interference. It 
 ## 🚀 Getting Started
 1.  Clone the repository:
     ```bash
-    git clone [https://github.com/yourusername/quicksand-timer.git](https://github.com/yourusername/quicksand-timer.git)
+    git clone [https://github.com/RupeshKankrej/time_rise.git](https://github.com/RupeshKankrej/time_rise.git)
     ```
 2.  Install dependencies:
     ```bash
