@@ -37,8 +37,10 @@ lib/
 │   └── time_helper.dart        # Duration formatting logic
 └── widgets/
     └── spring_water_clipper.dart # Custom Painter that draws the water shape
+```
 
 ## 🚀 Getting Started
+
 1.  Clone the repository:
     ```bash
     git clone [https://github.com/RupeshKankrej/time_rise.git](https://github.com/RupeshKankrej/time_rise.git)
