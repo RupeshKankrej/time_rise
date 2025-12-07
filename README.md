@@ -1,27 +1,42 @@
-# ⏳ Quicksand Timer
+# 🌊 Time Flow
 
-A minimalist, physics-based productivity timer built with Flutter. 
+**Time Flow** is an immersive, physics-based productivity timer built with Flutter.
 
-Unlike standard digital timers, Quicksand Timer utilizes the device's **accelerometer sensors** to create a tactile experience. The UI mimics an hourglass: flipping the phone 180° resets the gravity, rotates the interface, and starts a fresh session.
+Instead of a standard countdown, it visualizes time as a **liquid** that reacts to your physical movements. By simulating spring-mass physics and using device accelerometers, the water sloshes, tilts, and settles just like real liquid in a glass.
 
-## 📱 Features
-* **Physics-Driven Interaction:** Uses `sensors_plus` to detect device orientation (Y-axis gravity) for starting and resetting the timer.
-* **Dynamic Visuals:** Custom "falling sand" animation that creates a liquid progress effect.
-* **Smart Contrast Masking:** Implements complex layer masking (using `ClipRect` and `Stack`) to dynamically invert text color as the sand passes over it.
-* **Gesture Controls:** Tap-to-edit time picker with hour/minute/second precision.
-* **Adaptive UI:** The interface automatically rotates 180° when the phone is flipped, ensuring readability regardless of orientation.
+## ✨ Features
 
-## 🛠 Tech Stack
+* **💧 Real-Time Fluid Physics:** Uses a custom spring-mass physics engine (`water_physics.dart`) to simulate tension, dampening, and spread, creating realistic water jiggle and splash effects.
+* **📱 Gravity-Aware Tilt:** Tilt your phone left or right, and the water surface adjusts angle instantly using the device's **accelerometer**.
+* **🔄 Flip-to-Reset:** A tactile interaction model—flip your phone upside down to instantly reset the timer and start a new session.
+* **📳 Haptic Feedback:** Uses the `vibration` package to provide a heavy impact buzz when the timer hits zero.
+* **🎨 Edge-to-Edge UI:** Features a completely immersive design that draws behind the Android/iOS status bars and notches.
+* **🌑 Adaptive Text:** Smart layer masking ensures the timer text remains visible by dynamically changing color as the water level passes over it.
+
+## 🛠️ Tech Stack
+
 * **Framework:** Flutter & Dart
-* **State Management:** `setState` & `Timer.periodic` (High-precision loop)
-* **Hardware Sensors:** `sensors_plus` (Accelerometer event streams)
-* **UI/UX:** `AnimatedRotation`, `CupertinoTimerPicker`, `Custom Custom Layouts`
+* **Sensors:** `sensors_plus` (Accelerometer events)
+* **Haptics:** `vibration` (Hardware control)
+* **Rendering:** `CustomClipper` & `Canvas` (Low-level drawing)
+* **Architecture:** Modular file structure (Separated Logic, Physics, and UI)
 
-## 🧩 How It Works
-The app locks the device orientation to Portrait to prevent OS interference. It then listens to the accelerometer stream:
-1.  **Gravity Detection:** When the Y-axis value drops below `-4.0` (Upside Down), the app triggers a "Flip" state.
-2.  **State Logic:** This stops the current timer, resets the duration, and starts the sand flow immediately.
-3.  **Visual Rendering:** The screen renders two stacked layers (Dark text on Light bg / Light text on Dark bg). As time progresses, a `ClipRect` reveals the top layer pixel-by-pixel, creating a seamless color-change effect on the numbers.
+## 📂 Project Structure
+
+The project has been refactored for professional maintainability:
+
+```text
+lib/
+├── main.dart                   # Entry point (Orientation lock & System UI config)
+├── constants/
+│   └── app_colors.dart         # Theme colors (Navy & Cyan)
+├── screens/
+│   └── timer_screen.dart       # Main UI logic (Sensors, Timer Loop, State)
+├── utils/
+│   ├── water_physics.dart      # The Spring-Mass physics simulation engine
+│   └── time_helper.dart        # Duration formatting logic
+└── widgets/
+    └── spring_water_clipper.dart # Custom Painter that draws the water shape
 
 ## 🚀 Getting Started
 1.  Clone the repository:
